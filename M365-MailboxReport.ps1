@@ -11,7 +11,6 @@ For detailed Script execution: https://o365reports.com/2020/10/21/export-office-
 Param
 (
     [Parameter(Mandatory = $false)]
-    [switch]$MFA,
     [switch]$SharedMBOnly,
     [switch]$UserMBOnly,
     [string]$MBNamesFile,
@@ -50,23 +49,8 @@ Function main() {
         }
     } 
 
-    #Connect Exchange Online with MFA
-    #if ($MFA.IsPresent) {
-        Connect-ExchangeOnline
-    #}
-
-    #Authentication using non-MFA
-#    else {
-#        #Storing credential in script for scheduling purpose/ Passing credential as parameter
-#        if (($UserName -ne "") -and ($Password -ne "")) {
-#            $SecuredPassword = ConvertTo-SecureString -AsPlainText $Password -Force
-#            $Credential = New-Object System.Management.Automation.PSCredential $UserName, $SecuredPassword
-#        }
-#        else {
-#            $Credential = Get-Credential -Credential $null
-#        }
-#        Connect-ExchangeOnline -Credential $Credential
-#    }
+    #Connect Exchange Online
+    Connect-ExchangeOnline
 
     #Output file declaration 
     $ExportCSV = "C:\Temp\MailboxSizeReport_$((Get-Date -format yyyy-MMM-dd-ddd` hh-mm` tt).ToString()).csv" 
