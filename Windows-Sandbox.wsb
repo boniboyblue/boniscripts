@@ -1,0 +1,13 @@
+<Configuration>
+    <Networking>Enable</Networking>
+    <MappedFolders>
+        <MappedFolder>
+        <HostFolder>C:\Windows Sandbox</HostFolder>
+        <SandboxFolder>C:\Users\WDAGUtilityAccount\Downloads</SandboxFolder>
+        <ReadOnly>true</ReadOnly>
+        </MappedFolder>
+    </MappedFolders>
+    <AudioInput>Disable</AudioInput>
+    <ProtectedClient>Enable</ProtectedClient>
+    <ClipboardRedirection>Enable</ClipboardRedirection>
+</Configuration>
