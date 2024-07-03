@@ -55,9 +55,8 @@ function Get-MailboxForwardingInventory {
     if($IncludeDiscoveryMailboxes) { $included += "DiscoveryMailbox"}
     if($IncludeTeamMailboxes) { $included += "TeamMailbox"}
 
-    #Confirm connectivity to Exchange Online
-    #try { $session = Get-PSSession -InstanceId (Get-AcceptedDomain | select -First 1).RunspaceId.Guid -ErrorAction Stop  }
-    #catch { Write-Error "No active Exchange Online session detected, please connect to ExO first: https://technet.microsoft.com/en-us/library/jj984289(v=exchg.160).aspx" -ErrorAction Stop }
+    # Connect to Exchange Online
+    Connect-ExchangeOnline
 
     #Get the list of mailboxes, depending on the parameters specified when invoking the script
     if ($IncludeAll -or !$included) {
@@ -101,7 +100,7 @@ function Get-MailboxForwardingInventory {
 
         #check for Inbox rules
         if ($CheckInboxRules) {
-            $varRules = Get-InboxRule -Mailbox $MB.PrimarySmtpAddress.ToString() | ? {$_.ForwardTo -ne $null -or $_.ForwardAsAttachmentTo -ne $null -or $_.RedirectTo -ne $null} | Select Name,ForwardTo,ForwardAsAttachmentTo,RedirectTo
+            $varRules = Get-InboxRule -Mailbox $MB.PrimarySmtpAddress.ToString() | Where-Object {$null -ne $_.ForwardTo -or $null -ne $_.ForwardAsAttachmentTo -or $null -ne $_.RedirectTo} | Select-Object Name,ForwardTo,ForwardAsAttachmentTo,RedirectTo
             foreach ($rule in $varRules) {
                 $objForwarding = New-Object PSObject
                 $i++;Add-Member -InputObject $objForwarding -MemberType NoteProperty -Name "Number" -Value $i
@@ -116,7 +115,7 @@ function Get-MailboxForwardingInventory {
         #check for Calendar delegates
         if ($CheckCalendarDelegates) {
         #In PowerShell, ResourceDelegates is only configurable for Resource mailboxes now! However users can still configure it via Outlook's Delegate settings.
-        $varCaldelegates = Get-CalendarProcessing -Identity $MB.PrimarySmtpAddress.ToString() | select ResourceDelegates,ForwardRequestsToDelegates
+        $varCaldelegates = Get-CalendarProcessing -Identity $MB.PrimarySmtpAddress.ToString() | Select-Object ResourceDelegates,ForwardRequestsToDelegates
         foreach ($delegate in $varCaldelegates.ResourceDelegates) {
             $objForwarding = New-Object PSObject
             $i++;Add-Member -InputObject $objForwarding -MemberType NoteProperty -Name "Number" -Value $i
@@ -131,7 +130,7 @@ function Get-MailboxForwardingInventory {
 
     #Check for Transport rules
     if ($CheckTransportRules) {
-        $varTRules = Get-TransportRule | ? {$_.RedirectMessageTo -ne $null -or $_.BlindCopyTo -ne $null -or $_.AddToRecipients -ne $null -or $_.CopyTo -ne $null -or $_.AddManagerAsRecipientType -ne $null} # just get all... | Select Name,CopyTo,BlindCopyTo,RedirectMessageTo,AddManagerAsRecipientType,AddToRecipients,ManagerAddresses
+        $varTRules = Get-TransportRule | Where-Object {$null -ne $_.RedirectMessageTo -or $null -ne $_.BlindCopyTo -or $null -ne $_.AddToRecipients -or $null -ne $_.CopyTo -or $null -ne $_.AddManagerAsRecipientType} # just get all... | Select Name,CopyTo,BlindCopyTo,RedirectMessageTo,AddManagerAsRecipientType,AddToRecipients,ManagerAddresses
         foreach ($Trule in $varTRules) {
             $objForwarding = New-Object PSObject
             $i++;Add-Member -InputObject $objForwarding -MemberType NoteProperty -Name "Number" -Value $i
@@ -144,7 +143,7 @@ function Get-MailboxForwardingInventory {
     }}
 
     #Output the result to the console host
-    $arrForwarding | select 'Mailbox address','Mailbox type','Keep original message','Forwarding via','Forwarding to'
+    $arrForwarding | Select-Object 'Mailbox address','Mailbox type','Keep original message','Forwarding via','Forwarding to'
 }
 
 #Invoke the Get-MailboxForwardingInventory function and pass the command line parameters. Make sure the output is stored in a variable for reuse, even if not specified in the input!
