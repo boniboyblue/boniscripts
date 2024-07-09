@@ -3,7 +3,7 @@
 $Reg = Get-ItemProperty -Path 'HKLM:\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name "EnableMDNS" -ErrorAction SilentlyContinue
 
 # Check if entry was found.
-if ($Null -eq $Reg){
+if ($Null -eq $Reg) {
     # Entry not found
     Write-host "mDNS regedit entry found"
     Exit 1
