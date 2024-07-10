@@ -5,11 +5,11 @@ $Reg = Get-ItemProperty -Path 'HKLM:\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet
 # Check if entry was found.
 if ($Null -eq $Reg) {
     # Entry not found
-    Write-host "mDNS regedit entry found"
+    Write-host "mDNS regedit not entry found"
     Exit 1
 }
 else {
     # Entry found
-    Write-Host "mDNS regedit entry not found"
+    Write-Host "mDNS regedit entry found"
     Exit 0
 }
