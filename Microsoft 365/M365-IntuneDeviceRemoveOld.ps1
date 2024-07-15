@@ -12,8 +12,7 @@ https://learn.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0
 
 # Connect to Azure AD.
 Import-Module AzureAD
-$AdminUpn = ""
-Connect-AzureAD -AccountId $AdminUpn
+Connect-AzureAD
 
 # Pull the list of devices where the last login was more than 365 days and delete the selected ones.
 $Days = 365; $DatePast = Get-Date $((Get-Date).AddDays(-$Days))
