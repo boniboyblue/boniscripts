@@ -1,3 +1,5 @@
+#REQUIRES -Modules AzureAD
+
 # Connects to AzureAD - use GA account when prompted.
 Connect-AzureAD
 
