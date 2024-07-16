@@ -3,10 +3,10 @@
   Simple script that moves mouse cursor every 60 seconds to stop device from sleeping
 
 .NOTES
-  Version:        1.2
+  Version:        1.2.1
   Author:         Christopher Boni
   Creation Date:  16th July 2024
-  Purpose/Change: Display text on console window.
+  Purpose/Change: Display text on console window. Fixed typo.
 #>
 
 # Load the required libraries
@@ -22,7 +22,7 @@ $EndTime = $StartTime.AddHours(1)
 
 # Adding some text so not an empty PS Window.
 Write-Host "Running script - mouse will move slightly every 60 seconds"
-Write-Host "Script will stop running after 60 seconds, alternatively press CTRL + V so stop early"
+Write-Host "Script will stop running after 60 seconds, alternatively press CTRL + C so stop early"
 
 # Start a loop to move mouse every 60 seconds.
 while ((Get-Date) -lt $EndTime) {
