@@ -3,7 +3,7 @@
   Simple script that moves mouse cursor every 60 seconds to stop device from sleeping
 
 .NOTES
-  Version:        1.1
+  Version:        1.1.1
   Author:         Christopher Boni
   Creation Date:  16th July 2024
   Purpose/Change: Added a 60 minute time limit.
@@ -18,7 +18,7 @@ $y = [System.Windows.Forms.Cursor]::Position.Y
 
 # Start timer for 1 hour.
 $StartTime = Get-Date
-$EndTime - $StartTime.AddHours(1)
+$EndTime = $StartTime.AddHours(1)
 
 # Start a loop to move mouse every 60 seconds.
 while ((Get-Date) -lt $EndTime) {
