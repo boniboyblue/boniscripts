@@ -8,6 +8,8 @@ Script by:      O365Reports Team
 For detailed Script execution: https://o365reports.com/2020/10/21/export-office-365-mailbox-size-report-using-powershell/
 ============================================================================================
 #>
+#REQUIRES -Module ExchangeOnlineManagement
+
 Param
 (
     [Parameter(Mandatory = $false)]

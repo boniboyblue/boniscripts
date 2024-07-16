@@ -20,6 +20,7 @@ https://learn.microsoft.com/microsoft-365/admin/email/convert-user-mailbox-to-sh
 https://learn.microsoft.com/powershell/module/exchange/set-mailbox
 https://learn.microsoft.com/exchange/troubleshoot/user-and-shared-mailboxes/shared-mailboxes-unexpectedly-converted-to-user-mailboxes
 #>
+#REQUIRES -Module ExchangeOnlineManagement
 
 # Connect to EXO.
 #Set-ExecutionPolicy RemoteSigned -Force -Confirm:$false

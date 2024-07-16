@@ -1,3 +1,5 @@
+#REQUIRES -Module ExchangeOnlineManagement
+
 #Parameters
 $CSVFilePath = "C:\Temp\DL-Members.csv"
  

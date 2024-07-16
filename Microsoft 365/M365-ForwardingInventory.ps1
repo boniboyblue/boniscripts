@@ -23,6 +23,7 @@ function Get-MailboxForwardingInventory {
 .OUTPUTS
     Array with information about the mailbox, forwarding address and type of forwarding configured.
 #>
+#REQUIRES -Module ExchangeOnlineManagement
 
     [CmdletBinding()]
 

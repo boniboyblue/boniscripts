@@ -9,6 +9,7 @@ Need to use MGDevice commands instead.
 .LINK
 https://learn.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0
 #>
+#REQUIRES -Modules AzureAD
 
 # Connect to Azure AD.
 Import-Module AzureAD
