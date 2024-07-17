@@ -3,10 +3,10 @@
   Simple script that moves mouse cursor every 60 seconds to stop device from sleeping
 
 .NOTES
-  Version:        1.2.1
+  Version:        1.3
   Author:         Christopher Boni
   Creation Date:  16th July 2024
-  Purpose/Change: Display text on console window. Fixed typo.
+  Purpose/Change: Tweaked how the text is displayed.
 #>
 
 # Load the required libraries
