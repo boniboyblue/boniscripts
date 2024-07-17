@@ -21,6 +21,7 @@ $StartTime = Get-Date
 $EndTime = $StartTime.AddHours(1)
 
 # Adding some text so not an empty PS Window.
+Clear-Host
 Write-Host "Running script - mouse will move slightly every 60 seconds"
 Write-Host "Script will stop running after one hour, alternatively press CTRL + C to stop early"
 
