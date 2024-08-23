@@ -3,6 +3,9 @@
 ## [Clear-PrintSpooler.bat](Clear-PrintSpooler.bat)
 Quick batch script that will disable printer spool, delete the print queue then enable the print spooler again.
 
+## [Get-WindowsAutopilotInfo.ps1](Get-WindowsAutopilotInfo.ps1)
+Offical MS Script for getting hardware ID for Windows Autopilot
+
 ## [Rename-LocalComputerHostname.ps1](Rename-LocalComputerHostname.ps1)
 Quick PS script to rename a local computer.
 
