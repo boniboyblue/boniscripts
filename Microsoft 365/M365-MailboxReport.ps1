@@ -55,7 +55,7 @@ Function main() {
     Connect-ExchangeOnline
 
     #Output file declaration 
-    $ExportCSV = "C:\Temp\MailboxSizeReport_$((Get-Date -format yyyy-MMM-dd-ddd` hh-mm` tt).ToString()).csv" 
+    $ExportCSV = "$env:TEMP\MailboxSizeReport_$((Get-Date -format yyyy-MMM-dd-ddd` hh-mm` tt).ToString()).csv" 
 
     $Result = ""   
     $Results = @()  

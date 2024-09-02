@@ -22,7 +22,7 @@ Connect-ExchangeOnline
 $mailbox = Read-Host "What email address do you want to add aliases too?"
 
 # Grab the aliases from the CSV file (make sure it's named "alias.csv" and in the "C:\" drive)
-$users = Import-Csv "C:\alias.csv"
+$users = Import-Csv "$env:TEMP\alias.csv"
 
 # Loop through each alias in the file
 foreach ($alias in $users) {

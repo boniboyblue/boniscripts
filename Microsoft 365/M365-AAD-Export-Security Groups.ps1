@@ -21,4 +21,4 @@ $SecurityGroups | ForEach-Object {
 }
 
 # Let's export the above results into a CSV file.
-$Result | Export-CSV "C:\Temp\Security-Group-Members.csv" -NoTypeInformation -Encoding UTF8
+$Result | Export-CSV "$env:TEMP\Security-Group-Members.csv" -NoTypeInformation -Encoding UTF8

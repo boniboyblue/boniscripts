@@ -1,7 +1,7 @@
 #REQUIRES -Module ExchangeOnlineManagement
 
 #Parameters
-$CSVFilePath = "C:\Temp\DL-Members.csv"
+$CSVFilePath = "$env:TEMP\DL-Members.csv"
  
 Try {
     #Connect to Exchange Online
