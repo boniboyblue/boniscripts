@@ -93,7 +93,7 @@ Function main() {
 
     #Get all mailboxes from Office 365
     else {
-        Get-Mailbox -ResultSize Unlimited | foreach {
+        Get-Mailbox -ResultSize Unlimited | ForEach-Object {
             $UPN = $_.UserPrincipalName
             $Mailboxtype = $_.RecipientTypeDetails
             $DisplayName = $_.DisplayName
