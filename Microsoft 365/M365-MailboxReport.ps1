@@ -78,7 +78,7 @@ Function main() {
             $ProhibitSendQuota = $MBDetails.ProhibitSendQuota -replace "\(.*", ""
             $ProhibitSendReceiveQuota = $MBDetails.ProhibitSendReceiveQuota -replace "\(.*", ""
             #Check for archive enabled mailbox
-            if (($MBDetails.ArchiveDatabase -eq $null) -and ($MBDetails.ArchiveDatabaseGuid -eq $MBDetails.ArchiveGuid)) {
+            if (($null -eq $MBDetails.ArchiveDatabase) -and ($MBDetails.ArchiveDatabaseGuid -eq $MBDetails.ArchiveGuid)) {
                 $ArchiveStatus = "Disabled"
             }
             else {
@@ -110,7 +110,7 @@ Function main() {
                 return
             }  
             #Check for archive enabled mailbox
-            if (($_.ArchiveDatabase -eq $null) -and ($_.ArchiveDatabaseGuid -eq $_.ArchiveGuid)) {
+            if (($null -eq $_.ArchiveDatabase) -and ($_.ArchiveDatabaseGuid -eq $_.ArchiveGuid)) {
                 $ArchiveStatus = "Disabled"
             }
             else {
