@@ -12,5 +12,5 @@ Connect-ExchangeOnline
 
 # Change permissions for all users with calendars to Limited Details (https://learn.microsoft.com/en-us/powershell/module/exchange/add-mailboxfolderpermission?view=exchange-ps)
 foreach ($user in Get-Mailbox -RecipientTypeDetails UserMailbox) {
-    Set-MailboxFolderPermission -Identity ($user.alias + ':\calendar’) -User Default -AccessRights LimitedDetails
+    Set-MailboxFolderPermission -Identity ($user.alias + ':\calendar') -User Default -AccessRights LimitedDetails
 }
