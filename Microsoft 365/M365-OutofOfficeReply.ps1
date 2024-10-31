@@ -17,10 +17,10 @@
 Connect-ExchangeOnline
 
 # Import the list of users from a CSV file
-$users = Import-Csv -Path ""
+$users = Import-Csv -Path "ooo.csv"
 
 # Loop through each user in the CSV file
 foreach ($user in $users) {
     # Set the out of office message for the current user
-    Set-MailboxAutoReplyConfiguration -Identity $user.EmailAddress -AutoReplyState Enabled -InternalMessage "I am currently out of the office and will return on [Date]." -ExternalMessage "I am currently out of the office and will return on [Date]."
+    Set-MailboxAutoReplyConfiguration -Identity $user.EmailAddress -AutoReplyState Enabled -InternalMessage "Message Goes Here." -ExternalMessage "Message Goes Here."
 }
