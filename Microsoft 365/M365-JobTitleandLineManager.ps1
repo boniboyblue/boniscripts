@@ -1,8 +1,20 @@
+<#
+.DESCRIPTION
+I needed a script to export all user's Job Titles & Managers - turned out to be a bit more complex than I suspected.
+
+.NOTES
+Version:        1.0
+Author:         Christopher Boni
+Creation Date:  21st November 2024
+Purpose/Change: First release
+#>
+#REQUIRES -Module AzureAD
+
 # Connect to Azure AD
 Connect-AzureAD
 
 # Define the path for the CSV file
-$csvPath = "ExportedUsers.csv"
+$CSVFilePath = "$env:TEMP\ExportedUsers.csv"
 
 # Get all users from Azure AD and select the required properties
 $users = Get-AzureADUser -All $true | ForEach-Object {
@@ -18,6 +30,6 @@ $users = Get-AzureADUser -All $true | ForEach-Object {
 }
 
 # Export the selected properties to a CSV file
-$users | Export-Csv -Path $csvPath -NoTypeInformation
+$users | Export-Csv -Path $CSVFilePath -NoTypeInformation
 
-Write-Host "Export completed. The CSV file is located at $csvPath"
+Write-Host "Export completed. The CSV file is located at $CSVFilePath"
