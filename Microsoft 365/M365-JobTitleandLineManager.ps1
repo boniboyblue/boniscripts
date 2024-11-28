@@ -3,10 +3,10 @@
 I needed a script to export all user's Job Titles & Managers - turned out to be a bit more complex than I suspected.
 
 .NOTES
-Version:        1.0
+Version:        1.1
 Author:         Christopher Boni
 Creation Date:  21st November 2024
-Purpose/Change: First release
+Purpose/Change: Updated formatting.
 #>
 #REQUIRES -Module AzureAD
 
@@ -23,9 +23,9 @@ $users = Get-AzureADUser -All $true | ForEach-Object {
     $licenses = ($user.AssignedLicenses | ForEach-Object { (Get-AzureADSubscribedSku | Where-Object { $_.SkuId -eq $_.SkuId }).SkuPartNumber }) -join ","
     [PSCustomObject]@{
         DisplayName = $user.DisplayName
-        JobTitle = $user.JobTitle
-        Manager = if ($manager) { $manager.DisplayName } else { "No Manager" }
-        Licenses = $licenses
+        JobTitle    = $user.JobTitle
+        Manager     = if ($manager) { $manager.DisplayName } else { "No Manager" }
+        Licenses    = $licenses
     }
 }
 
