@@ -16,7 +16,7 @@ Purpose/Change: First release
 $users = Import-Csv -Path "test.csv"
 
 # Connect to Microsoft 365
-# Connect-MsolService
+Connect-MsolService
 
 # Loop through each user in the CSV file and update their Office Number
 foreach ($user in $users) {
